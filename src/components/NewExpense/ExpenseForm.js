@@ -33,8 +33,9 @@ const ExpenseForm = (props) => {
     };
     const submitHandler = (event) => {
         userInput.date = new Date(userInput.date)
+        userInput.amount = +userInput.amount
         event.preventDefault()  //To prevent default behaviour of form
-        props.onSaveExpenseData(userInput); 
+        props.onSaveExpenseData(userInput);
         setUserInput({
             title: '',
             amount: '',
@@ -60,6 +61,7 @@ const ExpenseForm = (props) => {
                 </div>
                 <div className="new-expense__actions">
                     <button type="submit">Add Expense</button>
+                    <button type="button" onClick={ props.onCancel}>Cancel</button>
                 </div>
             </form>
         </div>
